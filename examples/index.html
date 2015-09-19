@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../dist/simple_map.min.js"></script>
+  </head>
+  <body>
+    <div id="map_canvas" style="width:600px; height:400px;"></div>    
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var call_me_later = function updateLatLng(marker){
+        console.log(marker);
+      };      
+      var simple_map = $("#map_canvas").SimpleMap(
+        {
+          //lat: -31.428663117358596,
+          //lng:123.486328125,
+          //maxMarkers: 3,
+          blockMarkers: false,
+          infoWindow: {title: "Evento", content: "Descricão do evento"},
+          zoom : 12,
+          afterAddMarker : call_me_later
+        }
+      );
+    });
+    </script>
+  </body>
+</html>
