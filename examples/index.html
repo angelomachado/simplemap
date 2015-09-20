@@ -2,31 +2,77 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf8">
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
+      .row {
+        white-space: nowrap; 
+        width: 100%;
+      }
+      .row .col {
+        float: left;
+        width: 400px;
+        height: 400px;
+        position: relative; 
+      }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="../dist/simple_map.min.js"></script>
+    <script src="../dist/simple_map.js"></script>
   </head>
   <body>
-    <div id="map_canvas" style="width:600px; height:400px;"></div>    
+    <div class="row">
+      <div id="basic_map" class="col"></div>
+      <div class="col">
+        <br/> 
+        <button id="show_basic_map_markers">Show Markers</button>
+        <button id="hide_basic_map_markers">Hide Markers</button>
+        <button id="delete_basic_map_markers">Delete Markers</button>
+      </div>    
+    </div>
+    <br/>
+    <div class="row">
+      <div id="map_with_markers" class="col"></div>
+      <div class="col"></div>    
+    </div>
+
     <script type="text/javascript">
     $(document).ready(function(){
+      //Example events
+      $('#show_basic_map_markers').click(function(){
+        $("#basic_map").SimpleMap('showMarkers');
+      });
+      $('#hide_basic_map_markers').click(function(){
+        $("#basic_map").SimpleMap('hideMarkers');
+      });
+      $('#delete_basic_map_markers').click(function(){
+        $("#basic_map").SimpleMap('deleteMarkers');
+      });
       var call_me_later = function updateLatLng(marker){
         console.log(marker);
       };      
-      var simple_map = $("#map_canvas").SimpleMap(
+      $("#basic_map").SimpleMap(
         {
-          //lat: -31.428663117358596,
-          //lng:123.486328125,
-          //maxMarkers: 3,
+          lat: -23.428442,
+          lng: -51.934687, 
+          maxMarkers: 3,
           blockMarkers: false,
-          infoWindow: {title: "Evento", content: "Descricão do evento"},
-          zoom : 12,
-          afterAddMarker : call_me_later
+          zoom : 12
         }
+      );
+      $("#map_with_markers").SimpleMap();
+      $("#map_with_markers").SimpleMap('addMarkers',
+        [{
+          infoWindow: {title: "Evento 1", content: "Descricão do evento 1"},
+          lat: -23.428442,
+          lng: -51.934687          
+         },
+         {
+           infoWindow: {title: "Evento 2", content: "Descricão do evento 2"},
+           lat: -23.421669,
+           lng: -51.941338          
+         }]        
       );
     });
     </script>
