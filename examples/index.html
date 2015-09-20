@@ -19,7 +19,7 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="../dist/simple_map.js"></script>
+    <script src="../dist/simple_map.min.js"></script>
   </head>
   <body>
     <div class="row">
@@ -57,11 +57,15 @@
           lat: -23.428442,
           lng: -51.934687, 
           maxMarkers: 3,
-          blockMarkers: false,
+          blockMarkers: true,
           zoom : 12
         }
       );
-      $("#map_with_markers").SimpleMap();
+      $("#map_with_markers").SimpleMap(
+      {
+        afterAddMarker : call_me_later
+      }
+      );
       $("#map_with_markers").SimpleMap('addMarkers',
         [{
           infoWindow: {title: "Evento 1", content: "Descricão do evento 1"},

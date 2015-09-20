@@ -35,7 +35,7 @@
         //current map instance
         maps[s] = {};
         maps[s].markers = [];
-        maps[s].options = $.extend( {}, defaults, arguments );
+        maps[s].options = $.extend( {}, defaults, arguments[0] );
         maps[s].canvas = document.getElementById(this.selector.replace('#',''));       
         //Initializing the map
           var mapOptions = {
