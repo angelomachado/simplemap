@@ -36,10 +36,10 @@
         maps[s] = {};
         maps[s].markers = [];
         maps[s].options = $.extend( {}, defaults, arguments[0] );
-        maps[s].canvas = document.getElementById(this.selector.replace('#',''));       
+        maps[s].canvas = document.getElementById(s.replace('#',''));       
         //Initializing the map
           var mapOptions = {
-            zoom: maps[this.selector].options.zoom,
+            zoom: maps[s].options.zoom,
             mapTypeId: google.maps.MapTypeId.TERRAIN
           };        
         maps[s].map = new google.maps.Map(maps[s].canvas,mapOptions);       
@@ -75,7 +75,7 @@
         if (maps[s].options.infoWindow){
           var iwc = {};//infoWindowContent
           if (maps[s].options.infoWindow.title!=undefined)
-            iwc.title = maps[selector].options.infoWindow.title;
+            iwc.title = maps[s].options.infoWindow.title;
           if (maps[s].options.infoWindow.content!=undefined)
             iwc.content=maps[s].options.infoWindow.content;
           var infowindow = new google.maps.InfoWindow(iwc);        
@@ -117,12 +117,12 @@
     };      
     //where are u?
     function geoLocate(){
-      var selector = this.selector;  
+      var s = this.selector;  
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           function(position){
             var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            maps[selector].map.setCenter(location);          
+            maps[s].map.setCenter(location);          
           }
         );
       }else{

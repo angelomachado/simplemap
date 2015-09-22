@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf8">
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      .row {
+        white-space: nowrap; 
+        width: 100%;
+      }
+      .row .col {
+        float: left;
+        width: 400px;
+        height: 400px;
+        position: relative; 
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../dist/simple_map.min.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div id="basic_map" class="col"></div>
+      <div class="col"></div>    
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function(){     
+      $("#basic_map").SimpleMap(
+        {
+          lat: -23.428442,
+          lng: -51.934687, 
+          maxMarkers: 3,
+          blockMarkers: true,
+          zoom : 12
+        }
+      );
+    });
+    </script>
+  </body>
+</html>

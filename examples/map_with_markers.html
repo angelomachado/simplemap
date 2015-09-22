@@ -22,45 +22,32 @@
     <script src="../dist/simple_map.min.js"></script>
   </head>
   <body>
+    <br/>
     <div class="row">
-      <div id="basic_map" class="col"></div>
+      <div id="map_with_markers" class="col"></div>
       <div class="col">
         <br/> 
         <button id="show_basic_map_markers">Show Markers</button>
         <button id="hide_basic_map_markers">Hide Markers</button>
-        <button id="delete_basic_map_markers">Delete Markers</button>
+        <button id="delete_basic_map_markers">Delete Markers</button>        
       </div>    
-    </div>
-    <br/>
-    <div class="row">
-      <div id="map_with_markers" class="col"></div>
-      <div class="col"></div>    
     </div>
 
     <script type="text/javascript">
     $(document).ready(function(){
       //Example events
       $('#show_basic_map_markers').click(function(){
-        $("#basic_map").SimpleMap('showMarkers');
+        $("#map_with_markers").SimpleMap('showMarkers');
       });
       $('#hide_basic_map_markers').click(function(){
-        $("#basic_map").SimpleMap('hideMarkers');
+        $("#map_with_markers").SimpleMap('hideMarkers');
       });
       $('#delete_basic_map_markers').click(function(){
-        $("#basic_map").SimpleMap('deleteMarkers');
+        $("#map_with_markers").SimpleMap('deleteMarkers');
       });
       var call_me_later = function updateLatLng(marker){
         console.log(marker);
-      };      
-      $("#basic_map").SimpleMap(
-        {
-          lat: -23.428442,
-          lng: -51.934687, 
-          maxMarkers: 3,
-          blockMarkers: true,
-          zoom : 12
-        }
-      );
+      };
       $("#map_with_markers").SimpleMap(
       {
         afterAddMarker : call_me_later
